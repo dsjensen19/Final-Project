@@ -14,3 +14,8 @@ you can upgrade cargo, crew, sight, cannons
 end of game is falling off of the edge of the world
 
 storm refills islands and resets fog
+
+
+
+
+the map is a dictionary. The Key is the name and the value are x and y coordinates
