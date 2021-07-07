@@ -27,26 +27,53 @@ AUTHOR NAMES: Tyson Brost, Derek Jensen, Seth Burton, Chris Patrinovich
 
 Ship (Game Object) : Moves across screen carries values for the current health, supplies, crew and sight/cannon levels
     Assigned to - 
+        Functions:
 Constants : sets screen size, movement rates, island count, storm/loot frequency
-    Assigned to - 
+    Assigned to -
+        Contains: Prices
+        Functions: 
 Director :
     Assigned to - 
+        Functions:
 Buffer :Hold and display dynamic user input
     Assigned to - 
+        Functions:
 InputService : takes user input
     Assigned to - 
+        Functions:
 OutputSerivce : updates game board
     Assigned to - 
+        Functions:
 Score : tracks player score (Gold)
     Assigned to - 
+        Functions:
 Player : gives input 
     Assigned to - 
+        Functions:
 Map : generated to a set size, contains numerous islands and a pirate haven.
     Assigned to - 
+        Functions:
+Haven: 
+    Assigned to -
+        Contains:  Upgrades
+        Functions: Sell Treasure, GiveGold, GiveCrew, GiveSupplies
 Cargo hold (Game Object):
     Assigned to -
+        Contains: Dict[Treasure: Int, Supplies: int, Crew:count (Special Treasures: Win condition?)]  
+        Functions: Count Treasure
 Island (Game Object) : Randomly generated shapes/sizes and locations
     Assigned to - 
+        Functions: return treasure, clear treasure, generate treasure
+
+
+__________________________________________
+            
+        ---    STRETCH GOALS    ---
+__________________________________________
+Fog: Hides area far away
+    Assigned to - 
+        Functions: 
 Storm : occurs at random movement intervals? (every 100-200 moves?), resets islands and loot
     Assigned to - 
+        Functions: 
 
