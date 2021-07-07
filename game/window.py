@@ -1,9 +1,11 @@
 import arcade
-
 from arcade.color import BLACK, GRAY as backround_color
+from random import randint as rand
 
 import constants
 from game.gui_components.objects.dot import Dot
+from game.gui_components.objects.ship import Ship
+from game.gui_components.objects.island import Island
 from game.gui_components.point import Point
 from game.gui_components.animations.move import Move
 from game.gui_components.animations.turn import Turn
@@ -21,12 +23,17 @@ class Gui(arcade.Window):
         self.animations = []
 
 
-        self.dot = Dot(image = "ship", x = 500, y= 350)
+        self.ship = Ship(image = "ship", x = 500, y= 350)
         
 
-        self.objects.append(self.dot)
+        self.objects.append(self.ship)
+        for _ in range(500):
+            self.create_island()
 
-
+    def create_island(self):
+        x = 100 *rand(-100,100) + constants.SCREEN_WIDTH/2
+        y = 100 * rand(-100,100) + constants.SCREEN_HEIGHT/2
+        self.objects.append(Island(self.ship, x = x, y = y))
 
     def update(self, delta_time):
         self.while_key_held()
@@ -37,14 +44,15 @@ class Gui(arcade.Window):
             else:
                 ani.update()
         for obj in self.objects:
-                obj.update()
+                obj.update(self.ship)
             
 
     def on_draw(self):
         arcade.start_render()
         """ your code here"""
         for obj in self.objects:
-            obj.draw()
+            if obj.is_on_screen:
+                obj.draw()
 
         for x in range(-50, constants.SCREEN_WIDTH, constants.grid_square_pixle_length):
             arcade.draw_line(x, 0, x, constants.SCREEN_HEIGHT,BLACK)
@@ -63,9 +71,9 @@ class Gui(arcade.Window):
     def while_key_held(self):
         for key in self.keys_held:
             """ your code here"""
-            if not self.dot.is_in_animation:
-                self.animations.append(Turn(self.dot, .3, key))
-                self.animations.append(Move(self.dot, .4, key))
+            if not self.ship.is_in_animation:
+                self.animations.append(Turn(self.ship, .3, key))
+                self.animations.append(Move(self.ship, .4, key))
         
     def on_key_release(self, key, key_modifiers):
         if key in self.keys_held:

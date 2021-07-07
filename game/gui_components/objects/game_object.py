@@ -5,7 +5,7 @@ Created on Jun 07, 2021
 '''
 
 from abc import ABC
-
+from constants import RENDER_DISTANCE as render_distance
 from game.gui_components.point import Point
 from game.gui_components.sprite import Sprite
 from game.gui_components.vector import Vector
@@ -16,6 +16,7 @@ class Game_Object(ABC):
 		self.velocity = Vector(0, 0)
 		self.sprite = Sprite()
 		self._dRotation = 0.0
+		self.is_on_screen = False
 		self.is_in_animation = False
 
 		if "center" in kwargs.keys():
@@ -46,16 +47,15 @@ class Game_Object(ABC):
 	def draw(self):
 		self.sprite.draw(self.x, self.y)
 
-	def update(self):
+	def update(self, centerd_OBject):
 		self.center.move(self.velocity)
 		self.rotation += self._dRotation
 
-		# if self.animation:
-		# 	if self.animation.is_finished: 
-		# 		self.animation = None
-		# 		self.is_in_animation = False
-		# 	else:
-		# 		self.animation.update()
+		if self.center.distance(centerd_OBject.center) <= render_distance:
+			self.is_on_screen = True
+		else:
+			self.is_on_screen = False
+
 		
 
 	@property

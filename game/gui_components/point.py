@@ -5,6 +5,9 @@ Created on Jun 07, 2021
 '''
 
 
+from math import sqrt
+
+
 class Point():
 	def __init__(self, x, y):
 		self.x = x
@@ -19,3 +22,7 @@ class Point():
 
 	def copy(self):
 		return Point(self.x,self.y)
+
+	def distance(self, point):
+		distance = sqrt((point.x - self.x)**2 + (point.y - self.y)**2)
+		return distance
