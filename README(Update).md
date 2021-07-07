@@ -22,7 +22,7 @@ ______________________________________________________
 
               CLASSES AND ASSINGMENTS
 ______________________________________________________
-AUTHOR NAMES: Tyson Brost, Derek Jensen, Seth, Chris Patrinovich
+AUTHOR NAMES: Tyson Brost, Derek Jensen, Seth Burton, Chris Patrinovich
 
 
 Ship (Game Object) : Moves across screen carries values for the current health, supplies, crew and sight/cannon levels
