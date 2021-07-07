@@ -25,7 +25,7 @@ ______________________________________________________
 AUTHOR NAMES: Tyson Brost, Derek Jensen, Seth, Chris Patrinovich
 
 
-Ship (Actor) : Moves across screen carries values for the current health, supplies, crew and sight/cannon levels
+Ship (Game Object) : Moves across screen carries values for the current health, supplies, crew and sight/cannon levels
     Assigned to - 
 Constants : sets screen size, movement rates, island count, storm/loot frequency
     Assigned to - 
@@ -43,7 +43,9 @@ Player : gives input
     Assigned to - 
 Map : generated to a set size, contains numerous islands and a pirate haven.
     Assigned to - 
-Island : Randomly generated shapes/sizes and locations
+Cargo hold (Game Object):
+    Assigned to -
+Island (Game Object) : Randomly generated shapes/sizes and locations
     Assigned to - 
 Storm : occurs at random movement intervals? (every 100-200 moves?), resets islands and loot
     Assigned to - 
