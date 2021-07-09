@@ -5,14 +5,13 @@ from constants import (
     SCREEN_HEIGHT as screen_height)
 
 class Island(Game_Object):
-    def __init__(self,centered_object, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.image = "island"
-        self.centered_object = centered_object.center
 
-    def draw(self):
+    def draw(self, centered_object):
 
-        x = self.x - self.centered_object.x + screen_width / 2
-        y = self.y - self.centered_object.y + screen_height / 2
+        x = self.x - centered_object.x + screen_width/2
+        y = self.y - centered_object.y + screen_height/2
 
         self.sprite.draw(x, y)
