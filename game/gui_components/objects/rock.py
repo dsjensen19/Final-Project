@@ -4,10 +4,10 @@ from constants import (
     SCREEN_WIDTH as screen_width,
     SCREEN_HEIGHT as screen_height)
 
-class Island(Game_Object):
+class Rock(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.image = "None"
+        self.image = "Rock"
 
     def draw(self, centered_object):
         x = self.x - centered_object.x + screen_width / 2
@@ -16,4 +16,4 @@ class Island(Game_Object):
 
     def touch_ship(self, centered_object):
         centered_object.damage += 100
-        self.image = "None"
+        

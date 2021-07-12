@@ -3,23 +3,26 @@ from game.gui_components.animations.animation import Animation
 import arcade.key
 
 class Turn(Animation):
-    def __init__(self, game_object, time, key):
+    def __init__(self, game_object, key):
         self.key = key
         rotation = 0
-        if key == arcade.key.UP:
+        if key == arcade.key.UP or key == arcade.key.W:
             rotation = 90
-        elif key == arcade.key.DOWN:
+        elif key == arcade.key.DOWN or key == arcade.key.S:
             rotation = 270
-        elif key == arcade.key.RIGHT:
+        elif key == arcade.key.RIGHT or key == arcade.key.D:
             rotation = 0
-        elif key == arcade.key.LEFT:
+        elif key == arcade.key.LEFT or key == arcade.key.A:
             rotation = 180
+        else:
+            self.is_finished = True
+            return
         if game_object.rotation == rotation:
             self.is_finished = True
             return
         else:
             self.end_rotation = rotation
-            super().__init__(game_object, time)
+            super().__init__(game_object, 3/4 * game_object.get_speed())
             
         
     def set_initial_values(self):
