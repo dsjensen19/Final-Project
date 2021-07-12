@@ -23,4 +23,4 @@ class Island(Game_Object):
     def touch_ship(self, centered_object):
         centered_object.gold += self.gold
         self.gold = 0
-        self.image = "None"
+        self.image = "Island_looted"
