@@ -9,7 +9,6 @@ class Ship(Game_Object):
 
         #####
         self.gold = 0
-        self.damage = 0
         self.health = 100
 
         self.image = "Ship"
@@ -58,11 +57,7 @@ class Ship(Game_Object):
         return self.crew_values[self.crew_level]
 
     def draw(self, centered_object):
-        ######
-        Current_Health = {self.health} - {self.damage} 
-        if  {self.health} == {self.damage}:
-            Current_Health = 0
-        print(f"treasure: {self.gold}, Health: {Current_Health}")
+        print(f"treasure: {self.gold}, Health: {self.health}")
         x = screen_width / 2
         y = screen_height / 2
         self.sprite.draw(x, y)
