@@ -6,6 +6,9 @@ from constants import (
 class Ship(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        self.image = "Ship"
+
         speed_values = [1, 2, 3, 4, 5]
         vision_values = [3, 4, 5, 6, 7]
         hold_values = [200, 350, 500, 700, 1000]

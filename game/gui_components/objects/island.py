@@ -8,15 +8,8 @@ import random as random
 class Island(Game_Object):
     def __init__(self,centered_object, **kwargs):
         super().__init__(**kwargs)
-        image = random.randint(1,4)
-        if image == 1:
-            self.image = "Island_1"
-        elif image == 2:
-            self.image = "Island_2"
-        elif image == 3:
-            self.image = "Island_3"
-        elif image == 4:
-            self.image = "Island_4"
+        image_num = random.randint(1,1)
+        self.image = "Island_" + str(image_num)
         self.centered_object = centered_object.center
 
     def draw(self):

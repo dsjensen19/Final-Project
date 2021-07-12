@@ -23,7 +23,7 @@ class Gui(arcade.Window):
         self.animations = []
 
 
-        self.ship = Ship(image = "ship", x = 500, y= 350)
+        self.ship = Ship(x = 500, y= 350)
         
 
         self.objects.append(self.ship)
