@@ -9,6 +9,7 @@ from constants import (
 )
 from game.gui_components.objects.dot import Dot
 from game.gui_components.objects.ship import Ship
+from game.gui_components.objects.backround import Backround
 from game.gui_components.objects.island import Island
 from game.gui_components.point import Point
 from game.gui_components.animations.move import Move
@@ -28,11 +29,11 @@ class Gui(arcade.Window):
         self.animations = []
 
 
-        self.ship = Ship(image = "ship")
-        
+        self.ship = Ship()
+        self.objects.append(Backround())
 
         self.objects.append(self.ship)
-        for _ in range(1000):
+        for _ in range(100):
             self.create_island()
 
     def create_island(self):
@@ -58,14 +59,6 @@ class Gui(arcade.Window):
         for obj in self.objects:
             if obj.is_on_screen:
                 obj.draw(self.ship)
-
-        for x in range(int(screen_width//2 - 10.5*constants.grid_square_pixle_length), int(screen_width//2 + 10*constants.grid_square_pixle_length), constants.grid_square_pixle_length):
-            arcade.draw_line(x, 0, x, screen_height,BLACK)
-        for y in range(int(screen_height//2 - 10.5*constants.grid_square_pixle_length), int(screen_height//2 + 10*constants.grid_square_pixle_length), constants.grid_square_pixle_length):
-            arcade.draw_line(0, y, screen_width, y,BLACK)
-
-        arcade.draw_circle_filled(screen_width/2,screen_height/2,5,arcade.color.RED)
-        
     
     def on_key_press(self, key, key_modifiers):
         if not key in self.keys_held:

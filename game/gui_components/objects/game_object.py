@@ -4,7 +4,7 @@ Created on Jun 07, 2021
 @author: sethb
 '''
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from constants import RENDER_DISTANCE as render_distance
 from game.gui_components.point import Point
 from game.gui_components.sprite import Sprite
@@ -44,19 +44,29 @@ class Game_Object(ABC):
 		if "image" in kwargs.keys():
 			self.image = kwargs["image"] 
 
-	def draw(self):
+	def draw(self, centured_object):
 		self.sprite.draw(self.x, self.y)
 
-	def update(self, centerd_OBject):
+	def update(self, centerd_object):
 		self.center.move(self.velocity)
 		self.rotation += self._dRotation
 
-		if self.center.distance(centerd_OBject.center) <= render_distance:
+		if self.distance(centerd_object) <= render_distance:
 			self.is_on_screen = True
 		else:
 			self.is_on_screen = False
 
-		
+		if self.distance(centerd_object) == 0:
+			self.touch_ship(centerd_object)
+
+
+	
+	def distance(self, centered_object):
+		distance = self.center.distance(centered_object.center)
+		return distance / 100
+
+	def touch_ship(self, centered_object):
+		pass
 
 	@property
 	def x(self):

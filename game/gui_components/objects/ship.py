@@ -8,51 +8,44 @@ class Ship(Game_Object):
         super().__init__(**kwargs)
 
         self.image = "Ship"
+        self.x = screen_width / 2
+        self.y = screen_height / 2
 
-        speed_values = [1, 2, 3, 4, 5]
-        vision_values = [3, 4, 5, 6, 7]
-        hold_values = [200, 350, 500, 700, 1000]
-        crew_values = [5, 7, 9, 12, 16]
+        self.speed_values = [1, 2, 3, 4, 5]
+        self.vision_values = [3, 4, 5, 6, 7]
+        self.hold_values = [200, 350, 500, 700, 1000]
+        self.crew_values = [5, 7, 9, 12, 16]
 
-        speed_level = 0
-        vision_level = 0
-        hold_level = 0
-        crew_level = 0
+        self.speed_level = 0
+        self.vision_level = 0
+        self.hold_level = 0
+        self.crew_level = 0
 
-        self.current_speed = speed_values[0]
-        self.current_vision = vision_values[0]
-        self.current_hold = hold_values[0]
-        self.current_crew = crew_values[0]
 
     def upgrade(self, trait):
-
-        if (trait == speed):
-          speed_level += 1
-          self.current_speed = speed_values[speed_level]
-        elif (trait == vision):
-          vision_level += 1
-          self.current_vision = vision_values[vision_level]
-        elif (trait == hold):
-          hold_level += 1
-          self.current_hold = hold_values[hold_level]
-        elif (trait == crew):
-          crew_level += 1
-          self.current_crew = crew_values[crew_level]
+        if (trait == "speed"):
+          self.speed_level += 1
+        elif (trait == "vision"):
+          self.vision_level += 1
+        elif (trait == "hold"):
+          self.hold_level += 1
+        elif (trait == "crew"):
+          self.crew_level += 1
 
 
     def get_speed(self):
-        return self.current_speed
+        return self.speed_values[self.speed_level]
 
     def get_vision(self):
-        return self.current_vision
+        return self.vision_values[self.vision_level]
 
     def get_hold(self):
-        return self.current_hold
+        return self.hold_values[self.hold_level]
 
     def get_crew(self):
-        return self.current_crew
+        return self.crew_values[self.crew_level]
 
-    def draw(self):
+    def draw(self, centered_object):
         x = screen_width / 2
         y = screen_height / 2
         self.sprite.draw(x, y)
