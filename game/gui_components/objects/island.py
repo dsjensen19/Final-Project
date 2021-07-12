@@ -15,7 +15,7 @@ class Island(Game_Object):
             self.image = "Island_2"
         elif image == 3:
             self.image = "Island_3"
-        else image == 4:
+        elif image == 4:
             self.image = "Island_4"
         self.centered_object = centered_object.center
 

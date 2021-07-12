@@ -21,7 +21,7 @@ class Ship(Game_Object):
         self.current_hold = hold_values[0]
         self.current_crew = crew_values[0]
 
-     def upgrade(self, trait):
+    def upgrade(self, trait):
 
         if (trait == speed):
           speed_level += 1
