@@ -7,6 +7,10 @@ class Ship(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+        #####
+        self.gold = 0
+        self.damage = 0
+
         self.image = "Ship"
         self.x = screen_width / 2
         self.y = screen_height / 2

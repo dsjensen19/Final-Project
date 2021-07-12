@@ -7,7 +7,6 @@ from constants import (
     SCREEN_WIDTH as screen_width,
     SCREEN_HEIGHT as screen_height
 )
-from game.gui_components.objects.dot import Dot
 from game.gui_components.objects.ship import Ship
 from game.gui_components.objects.backround import Backround
 from game.gui_components.objects.island import Island
@@ -23,17 +22,15 @@ class Gui(arcade.Window):
         arcade.set_background_color(backround_color)
         self.set_update_rate(constants.REFRESH_RATE)
 
-
         """ your code here"""
         self.objects = []
         self.animations = []
-
 
         self.ship = Ship()
         self.objects.append(Backround())
 
         self.objects.append(self.ship)
-        for _ in range(100):
+        for _ in range(500):
             self.create_island()
 
     def create_island(self):
@@ -50,8 +47,7 @@ class Gui(arcade.Window):
             else:
                 ani.update()
         for obj in self.objects:
-                obj.update(self.ship)
-            
+                obj.update(self.ship)          
 
     def on_draw(self):
         arcade.start_render()
@@ -63,10 +59,7 @@ class Gui(arcade.Window):
     def on_key_press(self, key, key_modifiers):
         if not key in self.keys_held:
             self.keys_held.append(key)
-        """ your code here"""
-        
-
-        
+        """ your code here"""   
 
     def while_key_held(self):
         for key in self.keys_held:
