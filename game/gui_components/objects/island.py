@@ -8,7 +8,8 @@ import random as random
 class Island(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        image_num = random.randint(1,1)
+        image_num = random.randint(1,4)
+        self.rotation = 90 * random.randint(0,3)
         self.image = "Island_" + str(image_num)
         self.gold = randint(50, 1000)
 
@@ -21,4 +22,5 @@ class Island(Game_Object):
 
     def touch_ship(self, centered_object):
         centered_object.gold += self.gold
+        self.gold = 0
         self.image = "None"
