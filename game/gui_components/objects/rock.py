@@ -3,22 +3,17 @@ from random import randint
 from constants import (
     SCREEN_WIDTH as screen_width,
     SCREEN_HEIGHT as screen_height)
-import random as random
 
 class Island(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        image_num = random.randint(1,1)
-        self.image = "Island_" + str(image_num)
-        self.gold = randint(50, 1000)
+        self.image = "None"
 
     def draw(self, centered_object):
-
         x = self.x - centered_object.x + screen_width / 2
         y = self.y - centered_object.y + screen_height / 2
-
         self.sprite.draw(x, y)
 
     def touch_ship(self, centered_object):
-        centered_object.gold += self.gold
+        centered_object.damage += 100
         self.image = "None"

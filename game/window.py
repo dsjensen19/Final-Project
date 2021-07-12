@@ -1,10 +1,14 @@
 import arcade
-from arcade.color import BLACK, GRAY as backround_color
+from arcade.color import BLACK, BLUE_GRAY as backround_color
 from random import randint as rand
 
 import constants
-from game.gui_components.objects.dot import Dot
+from constants import (
+    SCREEN_WIDTH as screen_width,
+    SCREEN_HEIGHT as screen_height
+)
 from game.gui_components.objects.ship import Ship
+from game.gui_components.objects.backround import Backround
 from game.gui_components.objects.island import Island
 from game.gui_components.point import Point
 from game.gui_components.animations.move import Move
@@ -13,7 +17,7 @@ from game.gui_components.animations.turn import Turn
 
 class Gui(arcade.Window):
     def __init__(self):
-        super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
+        super().__init__(screen_width, screen_height)
         self.keys_held = []
         arcade.set_background_color(backround_color)
         self.set_update_rate(constants.REFRESH_RATE)
@@ -22,18 +26,17 @@ class Gui(arcade.Window):
         self.objects = []
         self.animations = []
 
-
-        self.ship = Ship(image = "ship", x = 500, y= 350)
-        
+        self.ship = Ship()
+        self.objects.append(Backround())
 
         self.objects.append(self.ship)
         for _ in range(500):
             self.create_island()
 
     def create_island(self):
-        x = 100 *rand(-100,100) + constants.SCREEN_WIDTH/2
-        y = 100 * rand(-100,100) + constants.SCREEN_HEIGHT/2
-        self.objects.append(Island(self.ship, x = x, y = y))
+        x = 100 * rand(-50, 50) + screen_width/2
+        y = 100 * rand(-50, 50) + screen_height/2
+        self.objects.append(Island(x = x, y = y))
 
     def update(self, delta_time):
         self.while_key_held()
@@ -44,29 +47,19 @@ class Gui(arcade.Window):
             else:
                 ani.update()
         for obj in self.objects:
-                obj.update(self.ship)
-            
+                obj.update(self.ship)          
 
     def on_draw(self):
         arcade.start_render()
         """ your code here"""
         for obj in self.objects:
             if obj.is_on_screen:
-                obj.draw()
-
-        for x in range(-50, constants.SCREEN_WIDTH, constants.grid_square_pixle_length):
-            arcade.draw_line(x, 0, x, constants.SCREEN_HEIGHT,BLACK)
-        for y in range(0, constants.SCREEN_HEIGHT, constants.grid_square_pixle_length):
-            arcade.draw_line(0, y, constants.SCREEN_WIDTH, y,BLACK)
-        
+                obj.draw(self.ship)
     
     def on_key_press(self, key, key_modifiers):
         if not key in self.keys_held:
             self.keys_held.append(key)
-        """ your code here"""
-        
-
-        
+        """ your code here"""   
 
     def while_key_held(self):
         for key in self.keys_held:
