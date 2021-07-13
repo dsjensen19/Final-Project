@@ -10,6 +10,8 @@ class Rock(Game_Object):
         self.image = "Rock"
         self.damage = 10
 
+    def reset(self):
+        pass
     def draw(self, centered_object):
         x = self.x - centered_object.x + screen_width / 2
         y = self.y - centered_object.y + screen_height / 2
@@ -21,6 +23,5 @@ class Rock(Game_Object):
                 self.damage = 10
 
     def touch_ship(self, centered_object):
-        centered_object.health -= self.damage
+        centered_object.damage(self.damage)
         self.damage = 0
-        

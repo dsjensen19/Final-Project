@@ -7,9 +7,9 @@ class Backround(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.image = "Backround"
-    def update(self, centerd_object):
-        self.is_on_screen = True
-    def draw(self, centered_object):
+    def update(self):
+        pass
+    def draw(self):
         x = screen_width / 2
         y = screen_height / 2
         self.sprite.draw(x, y)

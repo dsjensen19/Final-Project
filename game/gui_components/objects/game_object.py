@@ -44,18 +44,12 @@ class Game_Object(ABC):
 		if "image" in kwargs.keys():
 			self.image = kwargs["image"] 
 
-	def draw(self, centured_object):
+	def draw(self, centered_object):
 		self.sprite.draw(self.x, self.y)
 
 	def update(self, centerd_object):
 		self.center.move(self.velocity)
 		self.rotation += self._dRotation
-
-		if self.distance(centerd_object) <= render_distance:
-			self.is_on_screen = True
-		else:
-			self.is_on_screen = False
-
 		if self.distance(centerd_object) == 0:
 			self.touch_ship(centerd_object)
 

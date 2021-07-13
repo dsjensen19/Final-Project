@@ -4,6 +4,7 @@ Created on Jun 07, 2021
 @author: sethb
 '''
 
+import arcade
 import constants
 from arcade import(
 	draw_texture_rectangle,
@@ -61,6 +62,7 @@ class Sprite():
 
 	def draw(self, x, y):
 		alpha = 255
+		# arcade.draw_text(f"{x:.2f}, {y:.2f}",x,y,arcade.color.BLACK)
 		draw_texture_rectangle(x, y, self._width, self._height, self._texture, self.rotation, alpha)
 
 		
