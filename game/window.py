@@ -1,9 +1,5 @@
 import arcade
 from arcade.color import BLACK, BLUE_GRAY as backround_color
-from random import randint as rand
-
-from arcade.key import U
-
 import constants
 from constants import (
     SCREEN_WIDTH as screen_width,
@@ -12,11 +8,9 @@ from constants import (
 )
 from game.gui_components.objects.ship import Ship
 from game.gui_components.objects.backround import Backround
-from game.gui_components.objects.island import Island
-from game.gui_components.objects.rock import Rock
+from game.map import Map
 from game.gui_components.animations.move import Move
 from game.gui_components.animations.turn import Turn
-
 
 class Gui(arcade.Window):
     def __init__(self):
@@ -26,23 +20,10 @@ class Gui(arcade.Window):
         self.set_update_rate(constants.REFRESH_RATE)
 
         """ your code here"""
-        self.objects = []
         self.animations = []
-
         self.ship = Ship()
-        self.objects.append(Backround())
-
-        self.objects.append(self.ship)
-        for _ in range(100):
-            self.create_island()
-
-    def create_island(self):
-        x = 100 * rand(-WORLD_DISTANCE, WORLD_DISTANCE) + screen_width/2
-        y = 100 * rand(-WORLD_DISTANCE, WORLD_DISTANCE) + screen_height/2
-        if rand(0,5) == 5:
-            self.objects.append(Rock(x = x, y = y))
-        else:
-            self.objects.append(Island(x = x, y = y))
+        self.backround = Backround()
+        self.map = Map()
 
     def update(self, delta_time):
         self.while_key_held()
@@ -52,22 +33,30 @@ class Gui(arcade.Window):
                 self.animations.remove(ani)
             else:
                 ani.update()
-        for obj in self.objects:
-                obj.update(self.ship)          
+        self.ship.update()
+        self.map.update(self.ship)        
 
     def on_draw(self):
         arcade.start_render()
         """ your code here"""
-        for obj in self.objects:
-            if obj.is_on_screen:
-                obj.draw(self.ship)
+        self.backround.draw()
+        self.ship.draw()
+        self.map.draw(self.ship)
     
     def on_key_press(self, key, key_modifiers):
         if not key in self.keys_held:
             self.keys_held.append(key)
         """ your code here"""   
-        if key == arcade.key.U:
+        if key == arcade.key.KEY_1:
             self.ship.upgrade("speed")
+        if key == arcade.key.KEY_2:
+            self.ship.upgrade("vision")
+        if key == arcade.key.KEY_3:
+            self.ship.upgrade("hold")
+        if key == arcade.key.KEY_4:
+            self.ship.upgrade("crew")
+        if key == arcade.key.KEY_5:
+            self.ship.upgrade("health")
 
     def while_key_held(self):
         for key in self.keys_held:

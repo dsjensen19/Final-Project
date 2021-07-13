@@ -8,7 +8,7 @@ class Move(Animation):
         super().__init__(game_object, game_object.get_speed())
         
     def set_initial_values(self):
-        speed = constants.grid_square_pixle_length / self._time_end
+        speed = constants.GRID_SQUARE_PIXLE_LENGTH / self._time_end
         
         dx = 0
         dy = 0

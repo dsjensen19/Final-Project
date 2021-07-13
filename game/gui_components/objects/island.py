@@ -5,14 +5,21 @@ from constants import (
     SCREEN_HEIGHT as screen_height)
 import random as random
 
+MIN_TRESURE = 3
+MAX_TRESURE = 25
+
 class Island(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         image_num = random.randint(1,4)
         self.rotation = 90 * random.randint(0,3)
         self.image = "Island_" + str(image_num)
-        self.gold = randint(50, 1000)
-
+        self.treasure = randint(MIN_TRESURE, MAX_TRESURE)
+    def reset(self):
+        image_num = random.randint(1,4)
+        self.rotation = 90 * random.randint(0,3)
+        self.image = "Island_" + str(image_num)
+        self.treasure = randint(MIN_TRESURE, MAX_TRESURE)
     def draw(self, centered_object):
 
         x = self.x - centered_object.x + screen_width / 2
@@ -21,6 +28,6 @@ class Island(Game_Object):
         self.sprite.draw(x, y)
 
     def touch_ship(self, centered_object):
-        centered_object.gold += self.gold
-        self.gold = 0
+        centered_object.add_treasure(self.treasure)
+        self.treasure = 0
         self.image = "Island_looted"

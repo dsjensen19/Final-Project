@@ -1,6 +1,5 @@
 import arcade
 from game.window import Gui
-
 def main(): 
     window = Gui()
     arcade.run()
