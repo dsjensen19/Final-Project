@@ -9,6 +9,7 @@ from constants import (
 from game.gui_components.objects.ship import Ship
 from game.gui_components.objects.backround import Backround
 from game.map import Map
+from game.fog_map import Fog_Map
 from game.gui_components.animations.move import Move
 from game.gui_components.animations.turn import Turn
 
@@ -24,6 +25,7 @@ class Gui(arcade.Window):
         self.ship = Ship()
         self.backround = Backround()
         self.map = Map()
+        self.fog_map = Fog_Map()
 
     def update(self, delta_time):
         self.while_key_held()
@@ -34,14 +36,17 @@ class Gui(arcade.Window):
             else:
                 ani.update()
         self.ship.update()
-        self.map.update(self.ship)        
+        self.map.update(self.ship)
+        self.fog_map.update(self.ship)        
 
     def on_draw(self):
         arcade.start_render()
         """ your code here"""
         self.backround.draw()
-        self.ship.draw()
         self.map.draw(self.ship)
+        self.ship.draw()
+        self.fog_map.draw(self.ship)
+        
     
     def on_key_press(self, key, key_modifiers):
         if not key in self.keys_held:
