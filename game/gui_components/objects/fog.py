@@ -15,14 +15,4 @@ class Fog(Game_Object):
         x = self.x - centered_object.x + SCREEN_WIDTH/ 2
         y = self.y - centered_object.y + SCREEN_HEIGHT/ 2
         self.sprite.draw(x, y)
-        """
-        if x % 2 == 0:
-            self.rotation = 90 * random.randint(0,3)
-            self.sprite.draw(x, y)
-        elif x % 5 == 0:
-            self.rotation = 90 * random.randint(0,3)
-            self.sprite.draw(x, y)
-        elif y % 3 == 0:
-            self.rotation = 90 * random.randint(0,3)
-            self.sprite.draw(x, y)
-        """
+       
