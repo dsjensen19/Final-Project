@@ -1,0 +1,32 @@
+from arcade import draw_rectangle_filled
+from arcade.color import DAVY_GREY
+from arcade import draw_text
+from constants.py import constants
+
+class Hold():
+    """ this guy keeps track of gold and crew and treasure and such.
+    
+    it's an information holder.
+
+    """
+    #TODO: 
+
+    def __init__(self):
+        """I'm not exactly sure what to put here since everything needs to update."""
+        self.gold_amount = 0
+
+        
+
+    def draw_cargo_hold(self):
+        self.capacity = self.ship.current_hold
+        self.crew_level = self.ship.current_crew
+        draw_rectangle_filled(constants.SCREEN_WIDTH + 100, constants.SCREEN_HEIGHT-50, 200, 100, DAVY_GREY)
+        draw_text(f"Ship Capacity: {self.capacity}", constants.SCREEN_WIDTH + 20, constants.SCREEN_HEIGHT - 15, black, 12)
+        draw_text(f"Gold Amount: {self.gold_amount}", constants.SCREEN_WIDTH + 20, constants.SCREEN_HEIGHT - 30, black, 12)
+        draw_text(f"Crew Level: {self.crew_level}", constants.SCREEN_WIDTH + 20, constants.SCREEN_HEIGHT - 45, black, 12)
+
+    def set_gold(self, gold_amount):
+        self.gold_amount = gold_amount
+        
+    def get_gold(self):
+        return self.gold_amount

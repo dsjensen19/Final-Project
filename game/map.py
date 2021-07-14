@@ -36,7 +36,7 @@ class Map():
             while(not island_placed):
                 index_x = randint(0, WORLD_DISTANCE-1)
                 index_y = randint(0, WORLD_DISTANCE-1)
-                if not (index_x == WORLD_DISTANCE/2 and index_y == WORLD_DISTANCE/2):
+                if not (index_x >= (WORLD_DISTANCE/2 - 4) and index_x <= (WORLD_DISTANCE/2 + 4) and (index_y >= WORLD_DISTANCE/2 - 4) and (index_y <= WORLD_DISTANCE/2 + 4)):
                     if not self.islands[index_x][index_y]:
                         island_ref.x = SCREEN_WIDTH/2 + GRID_SQUARE_PIXLE_LENGTH * (index_x - WORLD_DISTANCE/2)
                         island_ref.y = SCREEN_HEIGHT/2 + GRID_SQUARE_PIXLE_LENGTH * (index_y - WORLD_DISTANCE/2)
