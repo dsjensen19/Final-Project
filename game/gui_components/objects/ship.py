@@ -15,7 +15,7 @@ class Ship(Game_Object):
         self.max_health_values = [100, 200, 300, 400, 500]
 
         self.speed_level = 0
-        self.vision_level = 0
+        self.vision_level =0
         self.hold_level = 0
         self.crew_level = 0
         self.max_health_level = 0
