@@ -42,7 +42,7 @@ class Gui(arcade.Window):
     def on_draw(self):
         arcade.start_render()
         """ your code here"""
-        self.backround.draw()
+        self.backround.draw(self.ship)
         self.map.draw(self.ship)
         self.ship.draw()
         self.fog_map.draw(self.ship)
