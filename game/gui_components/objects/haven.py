@@ -10,7 +10,7 @@ class Haven(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.image = "Haven_Large"
-        self.x = screen_width / 2
+        self.x = screen_width / 2 + 20
         self.y = screen_height / 2
     def reset(self):
         "stuff"

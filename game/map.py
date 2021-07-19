@@ -62,3 +62,4 @@ class Map():
             for y in range(shipy - RENDER_DISTANCE, shipy + RENDER_DISTANCE+1):
                 if self.islands[x][y]:
                     self.islands[x][y].update(centered_object)
+        self.haven.update(centered_object)
