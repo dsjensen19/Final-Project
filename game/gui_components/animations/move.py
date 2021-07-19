@@ -32,4 +32,6 @@ class Move(Animation):
         super().set_final_values()
         self._game_object.dx = 0
         self._game_object.dy = 0
+        if self._game_object.supplies > 0:
+            self._game_object.supplies -= 1
         

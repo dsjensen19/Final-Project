@@ -5,8 +5,8 @@ from constants import (
     SCREEN_HEIGHT as screen_height)
 import random as random
 
-MIN_TRESURE = 3
-MAX_TRESURE = 25
+MIN_TRESURE = 5
+MAX_TRESURE = 15
 
 class Island(Game_Object):
     def __init__(self, **kwargs):
@@ -28,6 +28,10 @@ class Island(Game_Object):
         self.sprite.draw(x, y)
 
     def touch_ship(self, centered_object):
-        centered_object.add_treasure(self.treasure)
-        self.treasure = 0
-        self.image = "Island_looted"
+        if centered_object.supplies >= 5:
+            if self.treasure > 0:
+                if centered_object.tresure < centered_object.get_hold():
+                    centered_object.add_treasure(self.treasure)
+                    centered_object.supplies -= 5
+                    self.treasure = 0
+                    self.image = "Island_looted"

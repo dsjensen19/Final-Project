@@ -12,6 +12,7 @@ from game.map import Map
 from game.fog_map import Fog_Map
 from game.gui_components.animations.move import Move
 from game.gui_components.animations.turn import Turn
+from game.stutus import Status_Indecator
 
 class Gui(arcade.Window):
     def __init__(self):
@@ -26,6 +27,7 @@ class Gui(arcade.Window):
         self.backround = Backround()
         self.map = Map()
         self.fog_map = Fog_Map()
+        self.status = Status_Indecator()
 
     def update(self, delta_time):
         self.while_key_held()
@@ -46,6 +48,7 @@ class Gui(arcade.Window):
         self.map.draw(self.ship)
         self.ship.draw()
         self.fog_map.draw(self.ship)
+        self.status.draw(self.ship)
         
     
     def on_key_press(self, key, key_modifiers):

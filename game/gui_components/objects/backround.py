@@ -6,10 +6,19 @@ from constants import (
 class Backround(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.image = "Backround_huge"
+        self.image = "Backround_smol"
     def update(self):
         pass
     def draw(self, centered_object):
-        x = self.x + 90 - centered_object.x + screen_width / 2
-        y = self.y + 63 - centered_object.y + screen_height / 2
+        
+
+        # if centered_object.is_in_animation:
+        #     pass
+        # self.x = centered_object.x
+        # self.y = centered_object.y
+
+        # x = screen_width / 2
+        # y = screen_height / 2
+        x = self.x - centered_object.x + screen_width / 2
+        y = self.y - centered_object.y + screen_height / 2
         self.sprite.draw(x, y)

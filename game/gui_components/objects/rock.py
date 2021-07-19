@@ -24,4 +24,15 @@ class Rock(Game_Object):
 
     def touch_ship(self, centered_object):
         centered_object.damage(self.damage)
+        if self.damage > 0:
+            if centered_object.tresure > 10:
+                centered_object.tresure -= 10
+            else:
+                centered_object.tresure = 0
+                
+            if centered_object.supplies > 10:
+                centered_object.supplies -= 10
+            else:
+                centered_object.supplies = 0
+
         self.damage = 0
