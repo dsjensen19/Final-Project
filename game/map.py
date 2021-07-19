@@ -18,6 +18,7 @@ class Map():
         self.fog = []
         self.create_island_refrences()
         self.place_islands()
+        self.haven = Haven()
         
 
     def create_island_refrences(self):
@@ -51,7 +52,7 @@ class Map():
             for y in range(shipy - RENDER_DISTANCE, shipy + RENDER_DISTANCE+1):
                 if self.islands[x][y]:
                     self.islands[x][y].draw(centered_object)
-        Haven().draw(centered_object)
+        self.haven.draw(centered_object)
 
     def update(self, centered_object):
         shipx = int((centered_object.x -SCREEN_WIDTH/2) / GRID_SQUARE_PIXLE_LENGTH + WORLD_DISTANCE/2)

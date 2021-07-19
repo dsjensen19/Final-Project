@@ -10,12 +10,14 @@ class Haven(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.image = "Haven_Large"
+        self.x = screen_width / 2
+        self.y = screen_height / 2
     def reset(self):
         "stuff"
     def draw(self, centered_object):
 
-        x = self.x + 900 - centered_object.x + screen_width / 2
-        y = self.y + 335 - centered_object.y + screen_height / 2
+        x = self.x  - centered_object.x + screen_width / 2
+        y = self.y  - centered_object.y + screen_height / 2
 
         self.sprite.draw(x, y)
 
