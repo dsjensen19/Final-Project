@@ -23,6 +23,7 @@ class Ship(Game_Object):
         self.x = 0.0
         self.y = 0.0
         self.curent_health = 0
+        self.supplies = 0
         self.treasure = 0
         self.reset()
 
@@ -31,6 +32,7 @@ class Ship(Game_Object):
         self.y = screen_height / 2
         self.curent_health = self.get_max_health()
         self.treasure = 0
+        self.supplies = 100
     def upgrade(self, trait):
         if (trait == "speed") and self.speed_level < len(self.speed_values)-1:
           self.speed_level += 1
@@ -66,9 +68,6 @@ class Ship(Game_Object):
             self.reset()
     
     def add_treasure(self, treasure_value):
-        
-        # if not self.cargo_hold.full():
-        #     self.cargo_hold.add_treasure(treasure_value)
         if self.treasure + treasure_value > self.get_hold():
             self.treasure = self.get_hold()
         else:
@@ -81,3 +80,4 @@ class Ship(Game_Object):
         self.sprite.draw(x, y)
     def update(self):
         super().update(self)
+
