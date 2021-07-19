@@ -1,15 +1,22 @@
+from arcade.arcade_types import Vector
 from constants import (
     SCREEN_WIDTH as screen_width,
     SCREEN_HEIGHT as screen_height)
+from game.gui_components.vector import Vector
 from arcade import draw_rectangle_filled
 from arcade import draw_rectangle_outline
 from arcade import draw_text
+from arcade import draw_circle_filled
+from arcade import draw_circle_outline
+from arcade import draw_polygon_filled
 from arcade.color import(
     DARK_GRAY as gray,
     BLACK as black,
     RED as red,
     GREEN_YELLOW as green,
-    GOLD as gold
+    GOLD as gold,
+    BRONZE_YELLOW as brown,
+    SILVER_SAND as silver
 )
 font_size = 12
 width  = 200
@@ -17,6 +24,10 @@ height = 100
 size = height / 12
 x = screen_width - 100
 y = screen_height - 50
+
+
+
+compas_points = [[72,0],[57,15],[57,5],[57,5],[-30,5],[-45,15],[-70,15],[-55,0],[-70,-15],[-45,-15],[-30,-5],[57,-5],[57,-5],[57,-15]]
 class Status_Indecator():
 
     def draw(self, centered_object):
@@ -40,4 +51,18 @@ class Status_Indecator():
         draw_text("Suplies", x - width/2, y + height/2 - 7*size, black, font_size, width, "center")
         draw_text("Tresure", x - width/2, y + height/2 - 11*size, black, font_size, width, "center")
 
-0
+
+        to_haven = Vector(-centered_object.x + (screen_width / 2 + 100), -centered_object.y + screen_height / 2)
+        angle = to_haven.angle
+        x1 = screen_width - 100
+        y1 = 100
+        draw_circle_filled(x1, y1, 75, silver)
+        draw_circle_outline(x1, y1, 75, black,2)
+        
+
+        new_points = []
+        for point in compas_points:
+            v = Vector(point[0],point[1])
+            v.angle += angle
+            new_points.append([v.dx+x1, v.dy+y1])        
+        draw_polygon_filled(new_points,brown)

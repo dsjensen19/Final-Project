@@ -30,7 +30,7 @@ class Island(Game_Object):
     def touch_ship(self, centered_object):
         if centered_object.supplies >= 5:
             if self.treasure > 0:
-                if centered_object.tresure < centered_object.get_hold():
+                if centered_object.treasure < centered_object.get_hold():
                     centered_object.add_treasure(self.treasure)
                     centered_object.supplies -= 5
                     self.treasure = 0
