@@ -20,8 +20,8 @@ class Ship(Game_Object):
         self.crew_level = 0
         self.max_health_level = 0
 
-        self.x = 0.0
-        self.y = 0.0
+        self.x = screen_width / 2
+        self.y = screen_height / 2
         self.curent_health = 0
         self.supplies = 0
         self.treasure = 0
@@ -74,7 +74,6 @@ class Ship(Game_Object):
             self.treasure += treasure_value
 
     def draw(self):
-        print(f"treasure: {self.treasure}, Health: {self.curent_health}")
         x = screen_width / 2
         y = screen_height / 2
         self.sprite.draw(x, y)
