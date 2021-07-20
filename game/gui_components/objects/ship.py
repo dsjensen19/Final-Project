@@ -7,7 +7,7 @@ class Ship(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.image = "Ship"
-        self.gold = 0
+        self.gold = 500
 
         self.speed_values = [0.3, 0.2, 0.1, 0.05, 0.025]
         self.vision_values = [1.5, 2.5, 3.5, 4.5, 5.5, 8]
@@ -45,20 +45,33 @@ class Ship(Game_Object):
     def upgrade(self, trait):
         if (trait == "speed") and self.speed_level < len(self.speed_values)-1:
             if self.get_gold() > self.speed_upgrades[self.speed_level]:
+                self.gold -= self.speed_upgrades[self.speed_level]
                 self.speed_level += 1
+                
         elif (trait == "vision") and self.vision_level < len(self.vision_values)-1:
             if self.get_gold() > self.vision_upgrades[self.vision_level]:
+                self.gold -= self.vision_upgrades[self.vision_level]
                 self.vision_level += 1
+                
         elif (trait == "hold") and self.hold_level < len(self.hold_values)-1:
             if self.get_gold() > self.hold_upgrades[self.hold_level]:
+                self.gold -= self.hold_upgrades[self.hold_level]
                 self.hold_level += 1
+                
         elif (trait == "crew") and self.crew_level < len(self.crew_values)-1:
-            if self.get_gold() > self.crew_upgrades[self.speed_level]:
+            if self.get_gold() > self.crew_upgrades[self.crew_level]:
+                self.gold -= self.crew_upgrades[self.crew_level]
                 self.crew_level += 1
+                
+        elif (trait == "supplies"):
+            if self.get_gold() > 50 and self.supplies <= 500:
+                self.supplies += 100
+                self.gold -= 50
         elif (trait == "health") and self.max_health_level < len(self.max_health_values)-1:
-            if self.get_gold() > self.health_upgrades[self.health_level]:
+            if self.get_gold() > self.max_health_upgrades[self.max_health_level]:
+                self.gold -= self.max_health_upgrades[self.max_health_level]
                 self.max_health_level += 1
-                self.curent_health = self.get_max_health()
+                self.current_health = self.get_max_health()
 
 
     def get_speed(self):

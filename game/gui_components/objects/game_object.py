@@ -47,11 +47,11 @@ class Game_Object(ABC):
 	def draw(self, centered_object):
 		self.sprite.draw(self.x, self.y)
 
-	def update(self, centerd_object):
+	def update(self, centered_object):
 		self.center.move(self.velocity)
 		self.rotation += self._dRotation
-		if self.distance(centerd_object) < .1:
-			self.touch_ship(centerd_object)
+		if self.distance(centered_object) < .1:
+			self.touch_ship(centered_object)
 
 
 	

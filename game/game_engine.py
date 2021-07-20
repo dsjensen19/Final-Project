@@ -35,8 +35,7 @@ class Game_Engine(arcade.View):
 
     def on_show(self):
         arcade.set_background_color(backround_color)
-        arcade.play_sound(self.sound_song, .25 ,0, True)
-        arcade.play_sound(self.sound_song, .2 ,0, True)
+        arcade.play_sound(self.sound_song, .15 ,0, True)
         self.map.place_islands()
         self.fog_map.reset()
         self.window.set_mouse_visible(False)

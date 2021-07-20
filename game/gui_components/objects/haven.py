@@ -36,7 +36,7 @@ class Haven(Game_Object):
     def buy_treasure(self, ship):
         treasure = ship.get_treasure()
         if treasure > 0: 
-            rate = 3
+            rate = 6
             ship.gold += treasure * rate
             ship.treasure = 0
             arcade.play_sound(self.sound_coins, 0.25)
