@@ -7,7 +7,7 @@ class Ship(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.image = "Ship"
-        self.gold = 500
+        self.gold = 0
 
         self.speed_values = [0.3, 0.2, 0.1, 0.05, 0.025]
         self.vision_values = [1.5, 2.5, 3.5, 4.5, 5.5, 8]
