@@ -12,7 +12,7 @@ from game.map import Map
 from game.fog_map import Fog_Map
 from game.gui_components.animations.move import Move
 from game.gui_components.animations.turn import Turn
-from game.stutus import Status_Indecator
+from game.status import Status_Indecator
 
 class Game_Engine(arcade.Window):
     def __init__(self, ship, map, fog_map):
@@ -30,7 +30,7 @@ class Game_Engine(arcade.Window):
         self.map = map
         self.fog_map = Fog_Map()
         self.status = Status_Indecator()
-        arcade.play_sound(self.sound_song)
+        arcade.play_sound(self.sound_song, 0.25,0, True)
 
     def update(self, delta_time):
         self.while_key_held()
@@ -71,7 +71,7 @@ class Game_Engine(arcade.Window):
         if key == arcade.key.ENTER:
             #Convert Treasure to Gold
             arcade.play_sound(self.sound_coins)
-            
+
 
 
     def while_key_held(self):

@@ -7,6 +7,7 @@ class Ship(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.image = "Ship"
+        self.gold = 0
 
         self.speed_values = [0.8, 0.4, 0.2, 0.1, 0.05]
         self.vision_values = [1.5, 2.5, 3.5, 4.5, 5.5, 8]
@@ -58,6 +59,9 @@ class Ship(Game_Object):
 
     def get_hold(self):
         return self.hold_values[self.hold_level]
+    
+    def get_gold(self):
+        return self.gold
 
     def get_crew(self):
         return self.crew_values[self.crew_level]
@@ -72,6 +76,7 @@ class Ship(Game_Object):
             self.treasure = self.get_hold()
         else:
             self.treasure += treasure_value
+
 
     def draw(self):
         x = screen_width / 2
