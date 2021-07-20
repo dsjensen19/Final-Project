@@ -11,7 +11,7 @@ def main():
     ship = Ship()
     map = Map()
     fog_map = Fog_Map()
-    window = arcade.Window(SCREEN_WIDTH, SCREEN_HEIGHT, "pirat")
+    window = arcade.Window(SCREEN_WIDTH, SCREEN_HEIGHT, "Pirate")
     game_view = Game_Engine(ship, map, fog_map)
     window.show_view(game_view)
     arcade.run()
