@@ -30,7 +30,7 @@ class Game_Engine(arcade.Window):
         self.map = map
         self.fog_map = Fog_Map()
         self.status = Status_Indecator()
-        arcade.play_sound(self.sound_song, 0.25,0, True)
+        arcade.play_sound(self.sound_song, .25 ,0, True)
 
     def update(self, delta_time):
         self.while_key_held()

@@ -15,6 +15,12 @@ class Ship(Game_Object):
         self.crew_values = [5, 7, 9, 12, 16]
         self.max_health_values = [100, 200, 300, 400, 500]
 
+        self.speed_upgrades = [100, 250, 625, 1563]
+        self.vision_upgrades = [100, 250, 625, 1563, 3906]
+        self.hold_upgrades = [100, 250, 625, 1563]
+        self.crew_upgrades = [100, 250, 625, 1563]
+        self.max_health_upgrades = [100, 250, 625, 1563]
+
         self.speed_level = 0
         self.vision_level =0
         self.hold_level = 0
@@ -36,16 +42,21 @@ class Ship(Game_Object):
         self.supplies = 100
     def upgrade(self, trait):
         if (trait == "speed") and self.speed_level < len(self.speed_values)-1:
-          self.speed_level += 1
+            if self.get_gold > self.speed_upgrades[self.speed_level]:
+                self.speed_level += 1
         elif (trait == "vision") and self.vision_level < len(self.vision_values)-1:
-          self.vision_level += 1
+            if self.get_gold > self.vision_upgrades[self.vision_level]:
+                self.vision_level += 1
         elif (trait == "hold") and self.hold_level < len(self.hold_values)-1:
-          self.hold_level += 1
+            if self.get_gold > self.hold_upgrades[self.hold_level]:
+                self.hold_level += 1
         elif (trait == "crew") and self.crew_level < len(self.crew_values)-1:
-          self.crew_level += 1
+            if self.get_gold > self.crew_upgrades[self.speed_level]:
+                self.crew_level += 1
         elif (trait == "health") and self.max_health_level < len(self.max_health_values)-1:
-          self.max_health_level += 1
-          self.curent_health = self.get_max_health()
+            if self.get_gold > self.health_upgrades[self.health_level]:
+                self.max_health_level += 1
+                self.curent_health = self.get_max_health()
 
 
     def get_speed(self):
