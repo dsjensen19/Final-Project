@@ -50,7 +50,7 @@ class Game_Object(ABC):
 	def update(self, centerd_object):
 		self.center.move(self.velocity)
 		self.rotation += self._dRotation
-		if self.distance(centerd_object) < 1:
+		if self.distance(centerd_object) < .1:
 			self.touch_ship(centerd_object)
 
 
