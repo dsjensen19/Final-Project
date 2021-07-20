@@ -21,11 +21,11 @@ from arcade.color import(
 )
 font_size = 12
 width  = 200
-height = 100
+height = 120
 size = height / 12
 x = screen_width - 100
-y = screen_height - 50
-
+y = screen_height - 60
+coin = Coin(x = (screen_width - 75), y = (y + height/2 -  10*size))
 
 
 compas_points = [[72,0],[57,15],[57,5],[57,5],[-30,5],[-45,15],[-70,15],[-55,0],[-70,-15],[-45,-15],[-30,-5],[57,-5],[57,-5],[57,-15]]
@@ -34,7 +34,7 @@ class Status_Indecator():
     def draw(self, centered_object):
         draw_rectangle_filled(x, y, width, height, gray)
         draw_rectangle_outline(x, y, width, height, gray)
-        Coin()
+        
 
 
         health_length = width * centered_object.curent_health/centered_object.get_max_health()

@@ -12,10 +12,6 @@ class Coin(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.image = "coin"
-        self.x = screen_width / 2 + 100
-        self.y = screen_height / 2
-
-        self.sound_coins = arcade.load_sound("sounds\Coins.mp3")
 
     def reset(self):
         "stuff"
