@@ -3,6 +3,7 @@ from constants import (
     SCREEN_WIDTH as screen_width,
     SCREEN_HEIGHT as screen_height)
 from game.gui_components.vector import Vector
+from game.gui_components.objects.coin import Coin
 from arcade import draw_rectangle_filled
 from arcade import draw_rectangle_outline
 from arcade import draw_text
@@ -33,6 +34,7 @@ class Status_Indecator():
     def draw(self, centered_object):
         draw_rectangle_filled(x, y, width, height, gray)
         draw_rectangle_outline(x, y, width, height, gray)
+        Coin()
 
 
         health_length = width * centered_object.curent_health/centered_object.get_max_health()
@@ -41,18 +43,16 @@ class Status_Indecator():
         draw_rectangle_filled(x, y + height/2 -  6*size, supplies_length, 2*size, green)
         treasure_length = width * centered_object.treasure/centered_object.get_hold()
         draw_rectangle_filled(x, y + height/2 -  10*size, treasure_length, 2*size, gold)
-        gold_length = width *2
-        draw_rectangle_filled(x, y + height/2 -  10*size, gold_length, 2*size, gold)
+
 
         draw_rectangle_outline(x, y + height/2 -  2*size, width, 2*size, black)
         draw_rectangle_outline(x, y + height/2 -  6*size, width, 2*size, black) 
         draw_rectangle_outline(x, y + height/2 -  10*size, width, 2*size, black) 
-        draw_rectangle_outline(x, y + height/2 -  14*size, width, 2*size, black) 
 
         draw_text("Health", x - width/2, y + height/2 - 3*size, black, font_size, width, "center")
         draw_text("Supplies", x - width/2, y + height/2 - 7*size, black, font_size, width, "center")
         draw_text("Treasure", x - width/2, y + height/2 - 11*size, black, font_size, width, "center")
-        draw_text("Gold", x - width/2, y + height/2 - 13*size, black, font_size, width, "center")
+        draw_text(f"Gold {centered_object.get_gold()}", x - width/2, y + height/2 - 15*size, black, font_size, width, "center")
 
 
         to_haven = Vector(-centered_object.x + (screen_width / 2 + 100), -centered_object.y + screen_height / 2)
