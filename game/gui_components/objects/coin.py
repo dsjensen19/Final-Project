@@ -8,10 +8,10 @@ import random as random
 
 
 
-class Haven(Game_Object):
+class Coin(Game_Object):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.image = "Haven_Large"
+        self.image = "coin"
         self.x = screen_width / 2 + 100
         self.y = screen_height / 2
 
@@ -25,17 +25,3 @@ class Haven(Game_Object):
         y = self.y  - centered_object.y + screen_height / 2
 
         self.sprite.draw(x, y)
-
-    #def touch_ship(self, centered_object):
-        #open GUI
-
-    def touch_ship(self, centered_object):
-        self.buy_treasure(centered_object)          
-    
-    def buy_treasure(self, ship):
-        treasure = ship.get_treasure()
-        if treasure > 0: 
-            rate = 3
-            ship.gold += treasure * rate
-            ship.treasure = 0
-            arcade.play_sound(self.sound_coins, 0.25)

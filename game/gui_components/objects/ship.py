@@ -73,6 +73,9 @@ class Ship(Game_Object):
     
     def get_gold(self):
         return self.gold
+        
+    def get_treasure(self):
+        return self.treasure
 
     def get_crew(self):
         return self.crew_values[self.crew_level]
