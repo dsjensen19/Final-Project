@@ -14,8 +14,8 @@ from game.gui_components.animations.move import Move
 from game.gui_components.animations.turn import Turn
 from game.stutus import Status_Indecator
 
-class Gui(arcade.Window):
-    def __init__(self):
+class Game_Engine(arcade.Window):
+    def __init__(self, ship, map, fog_map):
         super().__init__(screen_width, screen_height)
         self.keys_held = []
         arcade.set_background_color(backround_color)
@@ -25,9 +25,9 @@ class Gui(arcade.Window):
 
         """ your code here"""
         self.animations = []
-        self.ship = Ship()
+        self.ship = ship
         self.backround = Backround()
-        self.map = Map()
+        self.map = map
         self.fog_map = Fog_Map()
         self.status = Status_Indecator()
         arcade.play_sound(self.sound_song)
