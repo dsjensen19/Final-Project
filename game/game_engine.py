@@ -14,24 +14,31 @@ from game.gui_components.animations.move import Move
 from game.gui_components.animations.turn import Turn
 from game.status import Status_Indecator
 
-class Game_Engine(arcade.Window):
+class Game_Engine(arcade.View):
     def __init__(self, ship, map, fog_map):
-        super().__init__(screen_width, screen_height)
+        super().__init__()
         self.keys_held = []
         arcade.set_background_color(backround_color)
-        self.set_update_rate(constants.REFRESH_RATE)
-        self.sound_song = arcade.load_sound("sounds\OceanAndSeagulls.mp3")
+        
+        
         
 
         """ your code here"""
+        self.sound_song = arcade.load_sound("sounds\OceanAndSeagulls.mp3")
         self.animations = []
         self.ship = ship
         self.backround = Backround()
         self.map = map
         self.fog_map = Fog_Map()
         self.status = Status_Indecator()
+        self.pause_view = None
+    def on_show(self):
+        arcade.set_background_color(backround_color)
         arcade.play_sound(self.sound_song, .25 ,0, True)
-
+        self.ship.reset()
+        self.map.place_islands()
+        self.fog_map.reset()
+        self.window.set_mouse_visible(False)
     def update(self, delta_time):
         self.while_key_held()
         """ your code here"""
