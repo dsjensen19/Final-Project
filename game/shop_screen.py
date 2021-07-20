@@ -1,21 +1,24 @@
 import arcade
-import arcade.draw_rectangle_filled
-class shop_screen(arcade.View):
+from arcade import draw_rectangle_filled
+from arcade import draw_text
+class Shop_Screen(arcade.View):
     def __init__(self, ship, game_view):
         self.ship = ship
         self.game_view = game_view
         super().__init__()
-        self.speed_upgrade() = rectangle()
-        self.hold_upgrade() = rectangle()
-        self.health_upgrade() = rectangle()
-        self.vision_upgrade() = rectangle()
-        self.buy_supplies() = rectangle()
-        self.back_button() = rectangle()
+        self.speed_upgrade = rectangle(1,1,1,1)
+        self.hold_upgrade = rectangle(1,1,1,1)
+        self.health_upgrade = rectangle(1,1,1,1)
+        self.vision_upgrade = rectangle(1,1,1,1)
+        self.buy_supplies = rectangle(1,1,1,1)
+        self.back_button = rectangle(1,1,1,1)
 
     def on_show(self):
         self.set_mouse_visible = True
+        self.ship.in_port = False
 
     def on_draw(self):
+        arcade.start_render()
         self.speed_upgrade.draw()
         self.hold_upgrade.draw()
         self.health_upgrade.draw()
@@ -32,24 +35,23 @@ class shop_screen(arcade.View):
         elif self.vision_upgrade():
             self.ship.upgrade("vision")
         elif self.buy_supplies():
-            self.ship.upgrade("speed")
+            pass
         elif self.back_button():
-            window.show_view(self.game_view)
+            self.window.show_view(self.game_view)
 
 
-class rectangle:
-     def __init__(self, center_x, center_y, width, length ):
-        super().__init__(
-            'Button',
+class rectangle():
+    def __init__(self, center_x, center_y, width, length ):
             self.center_x=center_x,
             self.center_y=center_y,
             self.width = width,
             self.length= length
-     def draw(self):
-         draw_rectangle_filled(center_x, center_y, width, length, color)
-        )
+    def draw(self):
+        #  draw_rectangle_filled(self.center_x, self.center_y, self.width, self.length, arcade.color.BROWN)
+        pass
+
         
-     def on_click(self, x, y,):
+    def on_click(self, x, y,):
         """ Called when user lets off button """
         inside = True
         if x < (self.center_x - self.width/2):
@@ -60,4 +62,4 @@ class rectangle:
             inside = False
         elif y > (self.center_y + self.length/2):
             inside = False
-        return inside
+        return inside   

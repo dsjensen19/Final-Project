@@ -6,16 +6,16 @@ from constants import (
     SCREEN_HEIGHT as screen_height,
     WORLD_DISTANCE
 )
-from game.gui_components.objects.ship import Ship
 from game.gui_components.objects.backround import Backround
 from game.map import Map
 from game.fog_map import Fog_Map
 from game.gui_components.animations.move import Move
 from game.gui_components.animations.turn import Turn
 from game.status import Status_Indecator
+from game.shop_screen import Shop_Screen
 
 class Game_Engine(arcade.View):
-    def __init__(self, ship, map, fog_map):
+    def __init__(self, ship):
         super().__init__()
         self.keys_held = []
         arcade.set_background_color(backround_color)
@@ -28,14 +28,14 @@ class Game_Engine(arcade.View):
         self.animations = []
         self.ship = ship
         self.backround = Backround()
-        self.map = map
+        self.map = Map()
         self.fog_map = Fog_Map()
         self.status = Status_Indecator()
         self.pause_view = None
+
     def on_show(self):
         arcade.set_background_color(backround_color)
         arcade.play_sound(self.sound_song, .25 ,0, True)
-        self.ship.reset()
         self.map.place_islands()
         self.fog_map.reset()
         self.window.set_mouse_visible(False)
@@ -49,7 +49,10 @@ class Game_Engine(arcade.View):
                 ani.update()
         self.ship.update()
         self.map.update(self.ship)
-        self.fog_map.update(self.ship)        
+        self.fog_map.update(self.ship)      
+        if self.ship.in_port:
+            shop = Shop_Screen(self.ship, self)
+            self.window.show_view(shop)  
 
     def on_draw(self):
         arcade.start_render()
@@ -60,7 +63,6 @@ class Game_Engine(arcade.View):
         self.fog_map.draw(self.ship)
         self.status.draw(self.ship)
         
-    
     def on_key_press(self, key, key_modifiers):
         if not key in self.keys_held:
             self.keys_held.append(key)
@@ -76,8 +78,6 @@ class Game_Engine(arcade.View):
         if key == arcade.key.KEY_5:
             self.ship.upgrade("health")
 
-
-
     def while_key_held(self):
         for key in self.keys_held:
             """ your code here"""
@@ -89,15 +89,3 @@ class Game_Engine(arcade.View):
         if key in self.keys_held:
             self.keys_held.remove(key)
         """ your code here"""
-
-    def on_mouse_motion(self, x, y, delta_x, delta_y):
-        """ your code here"""
-        pass
-        
-    def on_mouse_press(self, x, y, button, key_modifiers):
-        """ your code here"""
-        pass
-
-    def on_mouse_release(self, x, y, button, key_modifiers):
-        """ your code here"""
-        pass

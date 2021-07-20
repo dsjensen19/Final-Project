@@ -32,6 +32,7 @@ class Ship(Game_Object):
         self.curent_health = 0
         self.supplies = 0
         self.treasure = 0
+        self.in_port = False
         self.reset()
 
     def reset(self):
@@ -40,6 +41,7 @@ class Ship(Game_Object):
         self.curent_health = self.get_max_health()
         self.treasure = 0
         self.supplies = 100
+        self.in_port = False
     def upgrade(self, trait):
         if (trait == "speed") and self.speed_level < len(self.speed_values)-1:
             if self.get_gold() > self.speed_upgrades[self.speed_level]:

@@ -30,7 +30,8 @@ class Haven(Game_Object):
         #open GUI
 
     def touch_ship(self, centered_object):
-        self.buy_treasure(centered_object)          
+        self.buy_treasure(centered_object)   
+        centered_object.in_port = True       
     
     def buy_treasure(self, ship):
         treasure = ship.get_treasure()
