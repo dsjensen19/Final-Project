@@ -39,17 +39,20 @@ class Status_Indecator():
         draw_rectangle_filled(x, y + height/2 -  2*size, health_length, 2*size, red)
         supplies_length = width * centered_object.supplies/centered_object.get_hold()
         draw_rectangle_filled(x, y + height/2 -  6*size, supplies_length, 2*size, green)
-        tresure_length = width * centered_object.treasure/centered_object.get_hold()
-        draw_rectangle_filled(x, y + height/2 -  10*size, tresure_length, 2*size, gold)
+        treasure_length = width * centered_object.treasure/centered_object.get_hold()
+        draw_rectangle_filled(x, y + height/2 -  10*size, treasure_length, 2*size, gold)
+        gold_length = width *2
+        draw_rectangle_filled(x, y + height/2 -  10*size, gold_length, 2*size, gold)
 
         draw_rectangle_outline(x, y + height/2 -  2*size, width, 2*size, black)
         draw_rectangle_outline(x, y + height/2 -  6*size, width, 2*size, black) 
         draw_rectangle_outline(x, y + height/2 -  10*size, width, 2*size, black) 
-
+        draw_rectangle_outline(x, y + height/2 -  14*size, width, 2*size, black) 
 
         draw_text("Health", x - width/2, y + height/2 - 3*size, black, font_size, width, "center")
-        draw_text("Suplies", x - width/2, y + height/2 - 7*size, black, font_size, width, "center")
-        draw_text("Tresure", x - width/2, y + height/2 - 11*size, black, font_size, width, "center")
+        draw_text("Supplies", x - width/2, y + height/2 - 7*size, black, font_size, width, "center")
+        draw_text("Treasure", x - width/2, y + height/2 - 11*size, black, font_size, width, "center")
+        draw_text("Gold", x - width/2, y + height/2 - 13*size, black, font_size, width, "center")
 
 
         to_haven = Vector(-centered_object.x + (screen_width / 2 + 100), -centered_object.y + screen_height / 2)

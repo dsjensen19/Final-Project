@@ -4,6 +4,7 @@ from constants import (
     SCREEN_WIDTH as screen_width,
     SCREEN_HEIGHT as screen_height)
 import random as random
+from game.gui_components.objects.ship import Ship
 
 
 class Haven(Game_Object):
@@ -21,6 +22,11 @@ class Haven(Game_Object):
 
         self.sprite.draw(x, y)
 
-    def touch_ship(self, centered_object):
+    #def touch_ship(self, centered_object):
         #open GUI
-        self.image = "Haven_Small"
+
+    def buy_treasure(self):
+        treasure = self.ship.get_hold
+        rate = 3
+        self.ship.gold = treasure * rate
+        self.ship.treasure = 0
