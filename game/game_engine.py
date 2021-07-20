@@ -21,7 +21,7 @@ class Game_Engine(arcade.Window):
         arcade.set_background_color(backround_color)
         self.set_update_rate(constants.REFRESH_RATE)
         self.sound_song = arcade.load_sound("sounds\OceanAndSeagulls.mp3")
-        self.sound_coins = arcade.load_sound("sounds\Coins.mp3")
+        
 
         """ your code here"""
         self.animations = []
@@ -68,9 +68,6 @@ class Game_Engine(arcade.Window):
             self.ship.upgrade("crew")
         if key == arcade.key.KEY_5:
             self.ship.upgrade("health")
-        if key == arcade.key.ENTER:
-            #Convert Treasure to Gold
-            arcade.play_sound(self.sound_coins)
 
 
 
