@@ -1,10 +1,11 @@
+import arcade
 from game.gui_components.objects.game_object import Game_Object
 from random import randint
 from constants import (
     SCREEN_WIDTH as screen_width,
     SCREEN_HEIGHT as screen_height)
 import random as random
-from game.gui_components.objects.ship import Ship
+
 
 
 class Haven(Game_Object):
@@ -13,6 +14,9 @@ class Haven(Game_Object):
         self.image = "Haven_Large"
         self.x = screen_width / 2 + 100
         self.y = screen_height / 2
+
+        self.sound_coins = arcade.load_sound("sounds\Coins.mp3")
+
     def reset(self):
         "stuff"
     def draw(self, centered_object):
@@ -25,8 +29,12 @@ class Haven(Game_Object):
     #def touch_ship(self, centered_object):
         #open GUI
 
-    def buy_treasure(self):
-        treasure = self.ship.get_hold
+    def touch_ship(self, centered_object):
+        self.buy_treasure(centered_object)           
+    
+    def buy_treasure(self, ship):
+        treasure = ship.get_hold
         rate = 3
-        self.ship.gold = treasure * rate
-        self.ship.treasure = 0
+        ship.gold = treasure * rate
+        ship.treasure = 0
+        arcade.play_sound(self.sound_coins, 0.25)
