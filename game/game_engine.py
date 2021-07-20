@@ -39,6 +39,8 @@ class Game_Engine(arcade.View):
         self.map.place_islands()
         self.fog_map.reset()
         self.window.set_mouse_visible(False)
+        self.ship.x = screen_width / 2
+        self.ship.y = screen_height / 2
     def update(self, delta_time):
         self.while_key_held()
         """ your code here"""
