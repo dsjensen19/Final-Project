@@ -44,7 +44,7 @@ class rectangle:
             self.center_x=center_x,
             self.center_y=center_y,
             self.width = width,
-            self.length= length
+            self.length= length)
      def draw(self):
          draw_rectangle_filled(center_x, center_y, width, length, color)
         )
